@@ -1,0 +1,75 @@
+// Code 1 : Question no. 88
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        
+        auto *leftArray = new int[m], 
+             *rightArray = new int[n];
+        
+        for(int in=0;in<m;in++){
+            leftArray[in]=nums1[in];
+        }
+
+        for(int in=0;in<n;in++){
+            rightArray[in]=nums2[in];
+        }
+        
+        
+        int i=0,j=0,z=0;
+
+        while(i<m && j<n){
+
+                if((leftArray[i]<=rightArray[j]) ){
+                    nums1[z]= leftArray[i];
+                    i++;
+                }
+                else if((leftArray[i]>=rightArray[j])){
+                    nums1[z]= rightArray[j];
+                    j++;
+                }
+                
+               ++z;
+        }
+
+        while((i<m) ){
+            nums1[z]=leftArray[i];
+            i++;
+            z++;
+        }
+        while((j<n)){
+            nums1[z]=rightArray[j];
+            j++;
+            z++;
+        }
+
+        delete [] leftArray;
+        delete [] rightArray;
+
+
+    }
+};
+
+// CODE 2: 
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int z = m + n - 1;
+
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] >= nums2[j]) {
+                nums1[z--] = nums1[i--];
+            } else {
+                nums1[z--] = nums2[j--];
+            }
+        }
+
+        while (j >= 0) {
+            nums1[z--] = nums2[j--];
+        }
+    }
+};
+
