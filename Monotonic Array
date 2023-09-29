@@ -1,0 +1,75 @@
+
+SOLUTION 1..........................................................
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        
+        int res1=0,res2=0,size=nums.size();
+        int i=0,j=nums.size();
+        if(j==1){
+            return true;
+        }
+        while(i<j-1){
+
+             if(nums[i]==nums[i+1]){
+                res1++;
+                res2++;
+            }
+            else if(nums[i]<nums[i+1]){
+                res1++;
+            }
+            else if(nums[i]>nums[i+1]){
+                res2++;
+            }
+            else{
+                break;
+            }
+    
+            if(res1==size-1 || res2==size-1){
+                return true;
+            }
+
+            i++;
+
+        }
+
+        return false;
+
+    }
+};
+
+SOLUTION 2..........................................................
+
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        
+        int res1=0,res2=0,size=nums.size();
+        int i=0,j=nums.size();
+        if(j==1){
+            return true;
+        }
+        bool increase = true;
+        bool decrease = true;
+        while(i<j-1){
+
+            if(nums[i]>nums[i+1]){
+                increase = false;
+            }
+            else if(nums[i]<nums[i+1]){
+                decrease = false;
+            }
+
+
+            if(!increase && ! decrease){
+                    return false;
+            }
+
+            i++;
+
+        }
+
+        return true;
+
+    }
+};
