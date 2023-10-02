@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
 
-            int res = candies[0];
+            int res = candies[0]; 
             vector<bool>temp;
             for(int i=1;i<candies.size();i++){ 
                 res =max(res,candies[i]);
